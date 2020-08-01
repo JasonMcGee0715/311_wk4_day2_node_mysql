@@ -58,9 +58,11 @@ const updateUserById = (req, res) => {
 
 const deleteUserByFirstName = (req, res) => {
   // DELETE FROM USERS WHERE FIRST NAME = <REQ PARAMS FIRST_NAME>
-  let sql = ""
+  const first = req.params.first_name
+
+  let sql = "DELETE FROM ?? WHERE first_name = ?"
   // WHAT GOES IN THE BRACKETS
-  sql = mysql.format(sql, [])
+  sql = mysql.format(sql, ['users', first])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
