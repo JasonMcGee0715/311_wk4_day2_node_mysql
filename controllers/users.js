@@ -42,10 +42,11 @@ const createUser = (req, res) => {
 const updateUserById = (req, res) => {
   // UPDATE USERS AND SET FIRST AND LAST NAME WHERE ID = <REQ PARAMS ID>
   const id = Number(req.params.id)
-  let first = req.body.first_name
-  let last = req.body.last_name
+  const first = req.body.first_name
+  const last = req.body.last_name
+  console.log(id)
 
-  let sql = "UPDATE ?? SET first_name = ??, last_name = ?? WHERE id = ?"
+  let sql = "UPDATE ?? SET first_name = ?, last_name = ? WHERE id = ? "
   // WHAT GOES IN THE BRACKETS
   sql = mysql.format(sql, ['users', first, last, id])
 
